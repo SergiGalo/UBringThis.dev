@@ -1,0 +1,129 @@
+/* MAIN STRUCTURE */
+
+body {
+	background-color: #EEEEEE;
+	background: -webkit-linear-gradient(#EEEEEE , #FFFFFF); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#EEEEEE, #FFFFFF); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#EEEEEE, #FFFFFF); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#EEEEEE , #FFFFFF); /* Standard syntax */
+	min-height: 100vh;
+	font-family: 'Allerta';
+	font-size: 16px;
+}
+
+.nav-bar {
+	background-color: #1D242B;
+	color: #EEEEEE;
+}
+
+.wrapper {
+	margin: 50px 0 0 0;
+}
+
+.content {
+
+}
+
+.side-bar {
+	background: #383838; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(#383838, #343434); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#383838, #343434); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#383838, #343434); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#383838, #343434); /* Standard syntax */
+	color: #FAFAFA;
+	font-weight: bold;
+	min-height: 100vh !important;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.side-bar ul a.list-group-item {
+	color: #3c3c3c;
+}
+
+.fa-check-square-o {
+	color: green;
+}
+
+/* SIDE BAR MENU */
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+ul li {
+	list-style-type: none;
+}
+
+div.btn-lists {
+	margin: 10px 0 10px 0;
+	font-size: 12px;
+}
+
+ul li.btn-lists:hover, ul li.btn-lists:active {
+	color: #6dcd5f;
+}
+
+ul .list-group-item {
+	background-color: #E8F1F5;
+	margin: 10px 0 10px 0;
+}
+
+ul li .list-group-item {
+	background-color: #005691;
+	margin: 10px 0 10px 0;
+}
+
+li .list-group-item .list-item {
+	margin: 0px;
+}
+
+/* ANCHORS / LINKS */
+a {
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	text-decoration: none;
+}
+
+a.list-group-item {
+	background-color: #EEEEEE;
+	color: #3c3c3c;
+	border: 3px solid #2dc76a;
+	box-sizing: border-box;
+}
+
+a.list-group-item:hover, a.list-group-item:active {
+	background: #34E97C; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(#34E97C, #1db954); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#34E97C, #1db954); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#34E97C, #1db954); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#34E97C, #1db954); /* Standard syntax */
+	color: #1D242B;
+}
+
+/* TABLES */
+
+.toggle-input {
+	display: none;
+}
+
+td .btn-product {
+	font-size: 20px;
+}
+
+td .btn-product span {
+	margin-right: 10px;
+}
+
+/* BUTTONS */
+
+.btn {
+	border: 1px solid;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}

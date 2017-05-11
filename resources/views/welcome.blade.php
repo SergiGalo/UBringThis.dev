@@ -35,9 +35,9 @@
 				</div>
 			</div>
 		</nav>
-		--->
+	--->
 		@section('menus.sidebar')
-					 This is the master sidebar.
+
 		@show
 
 		<div class="container">
