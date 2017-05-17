@@ -14,21 +14,15 @@ class LlistesController extends Controller
 	public function index()
 	{
 		//$user_id = Auth::user()->id;
-		return view('lists.index', array('lists' => Lliste::userOwnerLists(1), 'collaborations' => Lliste::userColaborationLists(1)));
+		return view('lists.index', array(
+			'lists' => Lliste::userOwnerLists(1),
+			'collaborations' => Lliste::userColaborationLists(1)
+		));
 	}
 
 	public function create()
 	{
 		return view('lists.create');
-	}
-
-	public function show($id)
-	{
-		return view('lists.show', array(
-			'list' => Lliste::findOrFail($id),
-			'products' => Producte::all()->where('list_id', '=', $id)->where('active', 1),
-			'colaboradors' => User::getColaboradors($id)
-			));
 	}
 
 	public function store(Request $request)
@@ -49,9 +43,28 @@ class LlistesController extends Controller
 		return redirect('/lists');
 	}
 
-	public function delete(Request $request, $id)
+	public function show($id)
 	{
+		return view('lists.show', array(
+			'list' => Lliste::findOrFail($id),
+			'owner' => User::getOwner($id),
+			'products' => Producte::all()->where('list_id', '=', $id)->where('active', 1),
+			'colaboradors' => User::getColaboradors($id)
+			));
+	}
 
+	public function edit()
+	{
+		return view('lists.edit');
+	}
+
+	public function update()
+	{
+		return view('lists.create');
+	}
+
+	public function destroy(Request $request, $id)
+	{
 		Lliste::deleteList($id);
 
 		return redirect('/lists');

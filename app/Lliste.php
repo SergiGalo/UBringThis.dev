@@ -15,7 +15,7 @@ class Lliste extends Model
 		$ownerLists = DB::table('llistes')
 						->where('owner', '=', $owner)
 						->where('active', '=', 1)
-						->orderBy('event_date', 'desc')
+						->orderBy('event_date', 'asc')
 						->get();
 
 		return $ownerLists;

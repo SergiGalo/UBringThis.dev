@@ -12,7 +12,7 @@
 
 				<form method="POST" action="{{ action('LlistesController@delete', $list->id) }}">
 
-					{{ method_field('PUT') }}
+					{{ method_field('DELETE') }}
 
 					{{ csrf_field() }}
 

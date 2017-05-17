@@ -11,14 +11,18 @@
 |
 */
 
+/* Llistes */
 Route::get('/lists', 'LlistesController@index');
 Route::get('/lists/create', 'LlistesController@create');
-Route::post('/lists/store', 'LlistesController@store');
+Route::post('/lists', 'LlistesController@store');
 Route::get('/lists/{id}', 'LlistesController@show');
-Route::put('/lists/{id}', 'LlistesController@delete');
+Route::get('/lists/{id}/edit', 'LlistesController@edit');
+Route::put('/lists/{id}', 'LlistesController@update');
+Route::delete('/lists/{id}', 'LlistesController@destroy');
 
+/* Productes */
 Route::post('/products/store', 'ProductesController@store');
-Route::put('/products/{id}', 'ProductesController@delete');
+Route::put('/products/{id}', 'ProductesController@destroy');
 
 
 Auth::routes();

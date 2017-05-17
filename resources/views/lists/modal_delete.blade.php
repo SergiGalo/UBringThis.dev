@@ -1,5 +1,5 @@
-<!-- Add User -->
-<div class="modal fade text-center" id="modal-delete-list" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<!-- Delete List Modal -->
+<div class="modal fade text-center" id="modal-list-delete" tabindex="-1" role="dialog" aria-labelledby="DeleteList">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 
@@ -8,9 +8,11 @@
 			</div>
 
 			<div class="modal-body">
-				<h4 class="modal-title" id="exampleModalLabel">Segur que vols eliminar la llista?</h4>
+				<h4 class="modal-title" id="DeleteList">Segur que vols eliminar la llista?</h4>
 
-				<form method="POST" action="{{ action('LlistesController@destroy', $list->id) }}">
+				<form action="{{ action('LlistesController@destroy', $list->id) }}" method="POST">
+
+					{{ method_field('DELETE') }}
 
 					{{ csrf_field() }}
 
@@ -23,7 +25,6 @@
 
 					</button>
 				</form>
-
 			</div>
 
 			<div class="modal-footer">
@@ -32,4 +33,4 @@
 		</div>
 	</div>
 </div>
-<!-- END Add User Modal -->
+<!-- END Delete List Modal -->

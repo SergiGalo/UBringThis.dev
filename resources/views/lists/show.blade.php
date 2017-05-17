@@ -13,7 +13,7 @@
 
 		<div class="btn-lists">
 			<span>
-				<a href="" type="button" data-toggle="modal" data-target="#modal-delete-list" data-list-id="{{ $list->id }}">
+				<a href="" type="button" data-toggle="modal" data-target="#modal-list-delete" data-list-id="{{ $list->id }}">
 					<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
 				</a>
 			</span>
@@ -30,15 +30,12 @@
 		<h4 class="list-group-item"><i class="fa fa-users" aria-hidden="true"></i>&nbsp; Participants:</h4>
 		<ul class="list-group-item fa-ul">
 			<li>
-				<span class="fa-li fa-stack fa-lg">
-					<i class="fa fa-user fa-stack-1x" aria-hidden="true"></i>
-					<i class="fa fa-user-o fa-stack-1x" aria-hidden="true"></i>
-				</span>
-				&nbsp; {{ $list->owner }}
+				<i class="fa fa-user" aria-hidden="true"></i>
+				&nbsp; {{ $owner->name.' '.$owner->lastname }}
 			</li>
 			@foreach($colaboradors as $colaborador)
 				<li>
-					<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp; {{ $colaborador->name }}
+					<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp; {{ $colaborador->name.' '.$colaborador->lastname }}
 				</li>
 			@endforeach
 		</ul>
@@ -127,7 +124,7 @@
 		</table>
 	</div>
 
-	@include('layouts.modal_delete')
+	@include('lists.modal_delete')
 
 	@include('products.modal_delete')
 

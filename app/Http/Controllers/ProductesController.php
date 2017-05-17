@@ -42,7 +42,7 @@ class ProductesController extends Controller
 		return redirect('/lists/'.$request->input('list_id'));
 	}
 
-	public function delete(Request $request)
+	public function destroy(Request $request)
 	{
 		Producte::deleteProduct($request->input('product_id'));
 

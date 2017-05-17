@@ -16,7 +16,7 @@ class User extends Authenticatable
 		 * @var array
 		 */
 		protected $fillable = [
-				'name', 'email', 'password',
+				'name', 'lastname', 'email', 'password',
 		];
 
 		/**
@@ -34,5 +34,13 @@ class User extends Authenticatable
 																				->where('colaboradors.list_id', '=', $list_id)
 																				->get();
 			return $colaboradors;
+		}
+
+		public static function getOwner($list_id)
+		{
+			$owner = DB::table('users')->join('llistes', 'users.id', '=', 'llistes.owner')
+																 ->where('llistes.id', $list_id)
+																 ->first();
+			return $owner;
 		}
 }

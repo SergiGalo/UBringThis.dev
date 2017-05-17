@@ -1,5 +1,5 @@
-<!-- Delete List Modal -->
-<div class="modal fade text-center" id="modal-product-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<!-- Delete Product Modal -->
+<div class="modal fade text-center" id="modal-product-delete" tabindex="-1" role="dialog" aria-labelledby="DeleteProduct">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 
@@ -8,9 +8,8 @@
 			</div>
 
 			<div class="modal-body">
-				<h4 class="modal-title" id="exampleModalLabel">Segur que vols eliminar el producte?</h4>
+				<h4 class="modal-title" id="DeleteProduct">Segur que vols eliminar el producte?</h4>
 
-				<!-- FORM: Product delete -->
 				<form action="/products/:PRODUCT_ID" method="POST" id="form-product-delete">
 
 					{{ method_field('PUT') }}
@@ -37,4 +36,4 @@
 		</div>
 	</div>
 </div>
-<!-- END Delete List Modal -->
+<!-- END Delete Product Modal -->
