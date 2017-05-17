@@ -74,22 +74,27 @@
 								<i class="fa fa-check-square-o" aria-hidden="true"></i>
 							@endif
 						</td>
+
 						<td>
 							<span class="toggle-info">{{ $product->name }}</span>
 							<input class="form-control toggle-input" type="text" value="{{ $product->name }}"/>
 						</td>
+
 						<td>
 							<span class="toggle-info">{{ $product->quantity }}</span>
 							<input class="form-control toggle-input" type="text" value="{{ $product->quantity }}"/>
 						</td>
+
 						<td>
 							<span class="toggle-info">{{ $product->units }}</span>
 							<input class="form-control toggle-input" type="text" value="{{ $product->units }}"/>
 						</td>
+
 						<td>
 							<span class="toggle-info">{{ $product->price }}</span>
 							<input class="form-control toggle-input" type="text" value="{{ $product->price }}"/>
 						</td>
+
 						<td>
 							<span class="toggle-info">{{ $product->assigned_to }}</span>
 							<select class="toggle-input" name="colaboradors">
@@ -100,20 +105,22 @@
 								@endforeach
 							</select>
 						</td>
+
 						<td>
 							<div class="btn-product">
 								<span class="btn-product-edit">
-									<a href="#">
+									<a href="">
 										<i class="fa fa-pencil" aria-hidden="true"></i>
 									</a>
 								</span>
 								<span class="btn-product-delete">
-									<a href="#">
+									<a href="" data-toggle="modal" data-target="#modal-product-delete">
 										<i class="fa fa-trash-o" aria-hidden="true"></i>
 									</a>
 								</span>
 							</div>
 						</td>
+
 					</tr>
 				@endforeach
 			</tbody>
@@ -121,5 +128,7 @@
 	</div>
 
 	@include('layouts.modal_delete')
+
+	@include('products.modal_delete')
 
 @endsection

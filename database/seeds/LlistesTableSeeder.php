@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Faker\Factory as Faker;
+
 
 class LlistesTableSeeder extends Seeder
 {
@@ -12,13 +14,14 @@ class LlistesTableSeeder extends Seeder
 		 */
 		public function run()
 		{
-			for ($i=0; $i < 25; $i++) {
+			$faker = Faker::create();
+			foreach (range(1, 50) as $index) {
 				$owner = DB::table('users')->select('id')->inRandomOrder()->first();
 				DB::table('llistes')->insert([
-					'title' => str_random(15),
+					'title' => $faker->word.' '.$faker->word,
 					'owner' => $owner->id,
 					'event_date' => Carbon::now(),
-					'location' => str_random(15),
+					'location' => $faker->city,
 				]);
 			}
 		}

@@ -7,3 +7,31 @@
 // 	var modal = $(this)
 // 	modal.find('.modal-body input').val(recipient)
 // })
+
+$(document).ready(function() {
+
+		$('.btn-product-delete').click( function() {
+			var row = $(this).parents('tr');
+			var product_id = row.data('product-id');
+			var form = $('#form-product-delete');
+			var val = $('#product_id').val(product_id).serialize();
+			form.attr('action').replace(':PRODUCT_ID', product_id);
+			// var data = form.serialize();
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: url,
+			// 	data: data,
+			// 	success: function() {
+			// 		row.fadeOut();
+			// 	}
+			// });
+		});
+
+		$('.btn-product-edit').click( function(e) {
+			e.preventDefault();
+			var row = $(this).parents('td');
+			row.toggle();
+
+		});
+
+});

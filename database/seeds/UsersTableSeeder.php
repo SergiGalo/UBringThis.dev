@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,11 +12,12 @@ class UsersTableSeeder extends Seeder
 		 */
 		public function run()
 		{
-			for ($i=0; $i < 25; $i++) {
+			$faker = Faker::create();
+			foreach (range(1, 50) as $index) {
 				DB::table('users')->insert([
-					'name' => str_random(8),
-					'lastname' => str_random(10),
-					'email' => str_random(8).'@mail.com',
+					'name' => $faker->name,
+					'lastname' => $faker->lastName,
+					'email' => $faker->email,
 					'password' => bcrypt('sec'),
 				]);
 			}

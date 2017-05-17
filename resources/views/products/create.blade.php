@@ -49,7 +49,7 @@
 			<label for="asigned_to">Assignat a:</label>
 			<div class="input-group">
 				<select class="form-control" name="assigned_to">
-						<option value="0"></option>
+						<option value="0">&nbsp;</option>
 						<option value="{{ $list->owner }}">Propietari</option>
 					@foreach($colaboradors as $colaborador)
 						<option value="{{ $colaborador->id }}">{{ $colaborador->name }}</option>
@@ -69,3 +69,4 @@
 
 	</form>
 </div>
+<!-- END FORM: Product create -->

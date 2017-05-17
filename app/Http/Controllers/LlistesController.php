@@ -26,7 +26,7 @@ class LlistesController extends Controller
 	{
 		return view('lists.show', array(
 			'list' => Lliste::findOrFail($id),
-			'products' => Producte::all()->where('list_id', '=', $id),
+			'products' => Producte::all()->where('list_id', '=', $id)->where('active', 1),
 			'colaboradors' => User::getColaboradors($id)
 			));
 	}
@@ -51,8 +51,8 @@ class LlistesController extends Controller
 
 	public function delete(Request $request, $id)
 	{
-		$list = Lliste::findOrFail($id);
-		$list->delete();
+
+		Lliste::deleteList($id);
 
 		return redirect('/lists');
 	}

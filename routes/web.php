@@ -15,8 +15,11 @@ Route::get('/lists', 'LlistesController@index');
 Route::get('/lists/create', 'LlistesController@create');
 Route::post('/lists/store', 'LlistesController@store');
 Route::get('/lists/{id}', 'LlistesController@show');
-Route::delete('/lists/{id}', 'LlistesController@delete');
+Route::put('/lists/{id}', 'LlistesController@delete');
+
 Route::post('/products/store', 'ProductesController@store');
+Route::put('/products/{id}', 'ProductesController@delete');
+
 
 Auth::routes();
 
