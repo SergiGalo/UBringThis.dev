@@ -1,5 +1,13 @@
 <!-- FORM: Product create -->
+@if (count($errors))
+
+<div class="row" id="collapseCreateProduct">
+
+@else
+
 <div class="collapse row" id="collapseCreateProduct">
+
+@endif
 
 	<form action="{{ action('ProductesController@store') }}" method="POST" name="create-product-form">
 
@@ -50,7 +58,7 @@
 			<div class="input-group">
 				<select class="form-control" name="assigned_to">
 						<option value="0">&nbsp;</option>
-						<option value="{{ $list->owner }}">Propietari</option>
+						<option value="{{ $list->owner }}">{{ $owner->name }}</option>
 					@foreach($colaboradors as $colaborador)
 						<option value="{{ $colaborador->id }}">{{ $colaborador->name }}</option>
 					@endforeach
@@ -61,12 +69,13 @@
 		<div class="form-group col-md-2">
 			<button type="submit" class="btn btn-success text-center">
 				<i class="fa fa-plus-circle" aria-hidden="true"></i>
-				Afegir
+				Afegir producte
 			</button>
 		</div>
 
 		@include ('layouts.errors')
 
 	</form>
+
 </div>
 <!-- END FORM: Product create -->

@@ -22,7 +22,12 @@ Route::delete('/lists/{id}', 'LlistesController@destroy');
 
 /* Productes */
 Route::post('/products/store', 'ProductesController@store');
-Route::put('/products/{id}', 'ProductesController@destroy');
+Route::get('/products/{p_id}/edit', 'ProductesController@edit');
+Route::put('/products/{p_id}', 'ProductesController@update');
+Route::delete('/products/{p_id}', 'ProductesController@destroy');
+
+/* Users */
+Route::post('/colaborations', 'ColaboradorsController@store');
 
 
 Auth::routes();

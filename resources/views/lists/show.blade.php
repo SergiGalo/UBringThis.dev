@@ -4,6 +4,10 @@
 
 @section('sidebar')
 
+	@include('lists.modal_delete')
+
+	@include('products.modal_delete')
+
 	<div class="list-group-item">
 		<?php
 			$time = date('h:i', strtotime($list->event_date));
@@ -13,17 +17,26 @@
 
 		<div class="btn-lists">
 			<span>
-				<a href="" type="button" data-toggle="modal" data-target="#modal-list-delete" data-list-id="{{ $list->id }}">
-					<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+				<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
+					<i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+				</button>
+			</span>
+			&nbsp;
+			<span>
+				<a href="/lists/{{ $list->id }}/edit" type="button" class="btn btn-warning">
+					<i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
 				</a>
 			</span>
 			&nbsp;
 			<span>
-				<a href="">
-					<i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+				<a href="" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-list-delete" data-list-id="{{ $list->id }}">
+					<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
 				</a>
 			</span>
 		</div>
+
+		@include ('add_user')
+
 		<h4 class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ $date }}</h4>
 		<h4 class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; {{ $time }}</h4>
 		<h4 class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; {{ $list->location }}</h4>
@@ -53,26 +66,28 @@
 		&nbsp; {{ $list->title }}
 	</h2>
 
-	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCreateProduct" aria-expanded="false" aria-controls="collapseCreateProduct">
-		Nou producte
-	</button>
+	<div class="btn-new-product">
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCreateProduct" aria-expanded="false" aria-controls="collapseCreateProduct">
+			Nou producte
+		</button>
+	</div>
 
 	@include('products.create')
 
 	<div class="table-responsive">
 		<table class="table table-striped">
 			<tbody>
-				@foreach($products as $key => $product)
+
+				@foreach($products as $product)
 					<tr data-product-id="{{ $product->id }}">
-						<td>
+						<!-- <td>
 							@if ($product->confirmed == 0)
 								<i class="fa fa-square-o" aria-hidden="true"></i>
 							@else
 								<i class="fa fa-check-square-o" aria-hidden="true"></i>
 							@endif
-						</td>
-
-						<td>
+						</td> -->
+						<!-- <td>
 							<span class="toggle-info">{{ $product->name }}</span>
 							<input class="form-control toggle-input" type="text" value="{{ $product->name }}"/>
 						</td>
@@ -94,24 +109,49 @@
 
 						<td>
 							<span class="toggle-info">{{ $product->assigned_to }}</span>
-							<select class="toggle-input" name="colaboradors">
+							<select class="toggle-input toggle-input" name="colaboradors">
 									<option value="null"></option>
-									<option value="{{ $list->owner }}">Propietari</option>
+									<option value="{{ $list->owner }}">{{ $owner->name }}</option>
 								@foreach($colaboradors as $colaborador)
 									<option value="{{ $colaborador->id }}">{{ $colaborador->name }}</option>
 								@endforeach
 							</select>
+						</td> -->
+						<td>
+							<div class="row">
+								<div class="p-name col-md-12">
+									<h3>{{ $product->name }}</h3>
+								</div>
+								<div class="p-total col-md-8 text-left">
+									<p>{{ $product->quantity.' '.$product->units.' x '.$product->price.'€ = '.($product->quantity*$product->price).'€' }}</p>
+								</div>
+								<div class="p-assigned col-md-4">
+									<p><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
+										@if ($product->assigned_to)
+											@if ($product->assigned_to == $owner->owner)
+												{{ $owner->name }}
+											@else
+												@foreach ($colaboradors as $colab)
+													@if ($product->assigned_to == $colab->id)
+														{{ $colab->name }}
+													@endif
+												@endforeach
+											@endif
+										@endif
+									</p>
+								</div>
+							</div>
 						</td>
 
 						<td>
 							<div class="btn-product">
 								<span class="btn-product-edit">
-									<a href="">
+									<a href="/products/{{ $product->id }}/edit" type="button" class="">
 										<i class="fa fa-pencil" aria-hidden="true"></i>
 									</a>
 								</span>
 								<span class="btn-product-delete">
-									<a href="" data-toggle="modal" data-target="#modal-product-delete">
+									<a href="" type="button" class="" data-toggle="modal" data-target="#modal-product-delete">
 										<i class="fa fa-trash-o" aria-hidden="true"></i>
 									</a>
 								</span>
@@ -123,9 +163,5 @@
 			</tbody>
 		</table>
 	</div>
-
-	@include('lists.modal_delete')
-
-	@include('products.modal_delete')
 
 @endsection

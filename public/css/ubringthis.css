@@ -1,6 +1,8 @@
 /* MAIN STRUCTURE */
 
 body {
+	--primary: red;
+	--secondary: blue;
 	background-color: #EEEEEE;
 	background: -webkit-linear-gradient(#EEEEEE , #FFFFFF); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(#EEEEEE, #FFFFFF); /* For Opera 11.1 to 12.0 */

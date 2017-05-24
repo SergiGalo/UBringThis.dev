@@ -27,11 +27,12 @@ $(document).ready(function() {
 			// });
 		});
 
-		$('.btn-product-edit').click( function(e) {
-			e.preventDefault();
-			var row = $(this).parents('td');
-			row.toggle();
+		// $('.btn-product-edit').click( function(e) {
+		// 	e.preventDefault();
+		// 	var row = $(this).parents('td');
+		// 	row.toggle();
+		// });
 
-		});
+		$()
 
 });

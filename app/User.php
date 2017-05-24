@@ -31,7 +31,7 @@ class User extends Authenticatable
 		public static function getColaboradors($list_id)
 		{
 			$colaboradors = DB::table('users')->join('colaboradors', 'users.id', '=', 'colaboradors.user_id')
-																				->where('colaboradors.list_id', '=', $list_id)
+																				->where('colaboradors.list_id', $list_id)
 																				->get();
 			return $colaboradors;
 		}

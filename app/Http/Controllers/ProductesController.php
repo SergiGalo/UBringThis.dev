@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Lliste;
 use App\Producte;
+use App\Colaborador;
+use App\User;
 
 class ProductesController extends Controller
 {
@@ -16,7 +19,6 @@ class ProductesController extends Controller
 
 	public function store(Request $request)
 	{
-
 		$this->validate(request(), [
 			'name' => 'required|min:2|max:50',
 			'quantity' => 'nullable|numeric',
@@ -30,14 +32,52 @@ class ProductesController extends Controller
 		if ($request->input('price') == '') { $price = 0.00; } else { $price = $request->input('price'); }
 		if ($request->input('assigned_to') == 0) { $assigned_to = null; } else { $assigned_to = $request->input('assigned_to'); }
 
-		DB::table('productes')->insert([
-			'list_id' => $request->input('list_id'),
-			'name' => $request->input('name'),
-			'quantity' => $quantity,
-			'units' => $units,
-			'price' => $price,
-			'assigned_to' => $assigned_to
+		$product = new Producte();
+		$product->list_id = $request->input('list_id');
+		$product->name = $request->input('name');
+		$product->quantity = $quantity;
+		$product->units = $units;
+		$product->price = $price;
+		$product->assigned_to = $assigned_to;
+		$product->save();
+
+		return redirect('/lists/'.$request->input('list_id'));
+	}
+
+	public function edit($id)
+	{
+		$product = Producte::findOrFail($id);
+
+		return view('products.edit', array(
+			'product' => $product,
+			'owner' => User::getOwner($product->list_id),
+			'colaboradors' => User::getColaboradors($product->list_id)
+		));
+	}
+
+	public function update(Request $request, $id)
+	{
+		$this->validate(request(), [
+			'name' => 'required|min:2|max:50',
+			'quantity' => 'nullable|numeric',
+			'units' => 'nullable',
+			'price' => 'nullable|numeric',
+			'assigned_to' => 'nullable|integer'
 		]);
+
+		if ($request->input('quantity') == '') { $quantity = 0; } else { $quantity = $request->input('quantity'); }
+		if ($request->input('units') == '') { $units = "unitats"; } else { $units = $request->input('units'); }
+		if ($request->input('price') == '') { $price = 0.00; } else { $price = $request->input('price'); }
+		if ($request->input('assigned_to') == 0) { $assigned_to = null; } else { $assigned_to = $request->input('assigned_to'); }
+
+		$product = Producte::findOrFail($id);
+		$product->list_id = $request->input('list_id');
+		$product->name = $request->input('name');
+		$product->quantity = $quantity;
+		$product->units = $units;
+		$product->price = $price;
+		$product->assigned_to = $assigned_to;
+		$product->save();
 
 		return redirect('/lists/'.$request->input('list_id'));
 	}
