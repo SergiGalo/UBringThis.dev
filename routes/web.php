@@ -26,10 +26,17 @@ Route::get('/products/{p_id}/edit', 'ProductesController@edit');
 Route::put('/products/{p_id}', 'ProductesController@update');
 Route::delete('/products/{p_id}', 'ProductesController@destroy');
 
-/* Users */
+/* Colaboradors */
+Route::get('/colaborations/{id}', 'ColaboradorsController@show');
 Route::post('/colaborations', 'ColaboradorsController@store');
+Route::delete('/colaborations/{id}', 'ColaboradorsController@destroy');
 
 
-Auth::routes();
+/* Registres */
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
 
-Route::get('/home', 'HomeController@index');
+/* Sessions */
+Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');

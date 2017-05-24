@@ -10,8 +10,8 @@
 
 	<div class="list-group-item">
 		<?php
-			$time = date('h:i', strtotime($list->event_date));
-			$date = date('d-m-y', strtotime($list->event_date));
+			$time = date('H:i', strtotime($list->event_date));
+			$date = date('d-m-Y', strtotime($list->event_date));
 		?>
 		<h4><i class="fa fa-info fa-3x" aria-hidden="true"></i></h4>
 
@@ -20,6 +20,12 @@
 				<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
 					<i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
 				</button>
+			</span>
+			&nbsp;
+			<span>
+				<a href="/colaborations/{{ $list->id }}" type="button" class="btn btn-danger">
+					<i class="fa fa-user-times fa-2x" aria-hidden="true"></i>
+				</a>
 			</span>
 			&nbsp;
 			<span>
@@ -35,7 +41,7 @@
 			</span>
 		</div>
 
-		@include ('add_user')
+		@include ('lists.add_user')
 
 		<h4 class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ $date }}</h4>
 		<h4 class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; {{ $time }}</h4>
@@ -44,11 +50,11 @@
 		<ul class="list-group-item fa-ul">
 			<li>
 				<i class="fa fa-user" aria-hidden="true"></i>
-				&nbsp; {{ $owner->name.' '.$owner->lastname }}
+				&nbsp; {{ $owner->name.' '.$owner->last_name }}
 			</li>
 			@foreach($colaboradors as $colaborador)
 				<li>
-					<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp; {{ $colaborador->name.' '.$colaborador->lastname }}
+					<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp; {{ $colaborador->name.' '.$colaborador->last_name }}
 				</li>
 			@endforeach
 		</ul>
@@ -129,11 +135,11 @@
 									<p><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
 										@if ($product->assigned_to)
 											@if ($product->assigned_to == $owner->owner)
-												{{ $owner->name }}
+												{{ $owner->name.' '.$owner->last_name }}
 											@else
 												@foreach ($colaboradors as $colab)
 													@if ($product->assigned_to == $colab->id)
-														{{ $colab->name }}
+														{{ $colab->name.' '.$colab->last_name }}
 													@endif
 												@endforeach
 											@endif

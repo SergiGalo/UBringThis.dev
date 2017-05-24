@@ -11,12 +11,19 @@ use App\User;
 
 class LlistesController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function index()
 	{
-		//$user_id = Auth::user()->id;
+		$user_id = auth()->user()->id;
+
 		return view('lists.index', array(
-			'lists' => Lliste::userOwnerLists(1),
-			'collaborations' => Lliste::userColaborationLists(1)
+			'lists' => Lliste::userOwnerLists($user_id),
+			'collaborations' => Lliste::userColaborationLists($user_id)
 		));
 	}
 
@@ -35,7 +42,7 @@ class LlistesController extends Controller
 
 		$list = new Lliste();
 		$list->title = $request->input('title');
-		$list->owner = 1;
+		$list->owner = auth()->user()->id;
 		$list->event_date = $request->input('event_date').' '.$request->input('event_time').':00';
 		$list->location = $request->input('location');
 		$list->save();
@@ -79,7 +86,7 @@ class LlistesController extends Controller
 
 		$list = Lliste::findOrFail($id);
 		$list->title = $request->input('title');
-		$list->owner = 1;
+		$list->owner = auth()->user()->id;
 		$list->event_date = $request->input('event_date').' '.$request->input('event_time').':00';
 		$list->location = $request->input('location');
 		$list->save();

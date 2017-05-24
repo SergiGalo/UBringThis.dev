@@ -13,9 +13,11 @@
 
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp; Usuari</a></li>
-				<li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Configuració</a></li>
-				<li><a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp; Ajuda</a></li>
+				@if (Auth::check())
+					<li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp; {{ Auth::user()->name }}</a></li>
+					<li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Configuració</a></li>
+					<li><a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp; Ajuda</a></li>
+				@endif
 			</ul>
 		</div>
 

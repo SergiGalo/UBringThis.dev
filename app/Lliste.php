@@ -26,7 +26,7 @@ class Lliste extends Model
 		//SELECT * FROM llistes JOIN colaboradors WHERE llistes.id = colaboradors.list_id AND colaboradors.user_id = 5//
 		$collaborationLists = DB::table('llistes')
 						->join('colaboradors', 'llistes.id', '=', 'colaboradors.list_id')
-						->where('colaboradors.user_id', '=', 1)
+						->where('colaboradors.user_id', '=', $collaborator)
 						->get();
 
 		return $collaborationLists;

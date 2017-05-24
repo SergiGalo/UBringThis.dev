@@ -1,15 +1,15 @@
 <!-- Add User Form -->
 <div class="collapse row" id="collapseAddUser">
-	<form action="{{ action('ColaboradorsController@store') }}" method="POST" name="create-product-form">
+	<form class="" role="form" method="POST" action="/colaborations" name="create-product-form">
 
 		{{ csrf_field() }}
 
 		<input type="hidden" name="list_id" value="{{ $list->id }}">
 
-		<div class="form-group col-md-12">
-			<label for="mail">E-mail usuari:</label>
-			<div class="input-group col-md-12">
-				<input class="form-control" type="email" name="mail" id="mail">
+		<div class="form-group">
+			<label for="mail" class="col-md-12 control-label">E-Mail usuari:</label>
+			<div class="col-md-12">
+				<input type="email" class="form-control" name="mail" value="{{ old('email') }}">
 			</div>
 		</div>
 
@@ -19,6 +19,8 @@
 				Afegir Usuari
 			</button>
 		</div>
+
+		@include ('layouts.errors')
 
 	</form>
 </div>

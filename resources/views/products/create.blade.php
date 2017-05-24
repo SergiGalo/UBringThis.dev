@@ -9,7 +9,7 @@
 
 @endif
 
-	<form action="{{ action('ProductesController@store') }}" method="POST" name="create-product-form">
+	<form class="" role="form" method="POST" action="{{ action('ProductesController@store') }}" name="create-product-form">
 
 		{{ csrf_field() }}
 
@@ -18,7 +18,7 @@
 		<div class="form-group col-md-3">
 			<label for="name">Nom:</label>
 			<div class="input-group">
-				<input class="form-control" type="text" name="name" id="name">
+				<input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
 			</div>
 		</div>
 
@@ -68,8 +68,7 @@
 
 		<div class="form-group col-md-2">
 			<button type="submit" class="btn btn-success text-center">
-				<i class="fa fa-plus-circle" aria-hidden="true"></i>
-				Afegir producte
+				<i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp; Afegir producte
 			</button>
 		</div>
 
