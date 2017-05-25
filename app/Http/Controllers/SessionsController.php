@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware('guest')->except(['index', 'destroy']);
+	}
+
+	public function index()
+	{
+		return view('sessions.welcomepage');
+	}
 
 	public function create()
 	{
@@ -28,6 +37,6 @@ class SessionsController extends Controller
 	{
 		auth()->logout();
 
-		return redirect('/login');
+		return redirect('/');
 	}
 }

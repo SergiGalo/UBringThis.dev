@@ -1,80 +1,96 @@
-<!-- FORM: Product create -->
-@if (count($errors))
+@extends('layouts.master')
 
-<div class="row" id="collapseCreateProduct">
+@section('page_title', 'Edició producte')
 
-@else
+@section('sidebar')
 
-<div class="collapse row" id="collapseCreateProduct">
+@endsection
 
-@endif
+@section('content')
 
-	<form class="" role="form" method="POST" action="{{ action('ProductesController@store') }}" name="create-product-form">
+<div class="col-md-offset-1 col-md-8">
+	<h2 class="sub-header">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-shopping-basket fa-stack-1x" aria-hidden="true"></i>
+			<i class="fa fa-square-o fa-stack-2x" aria-hidden="true"></i>
+		</span>
+		&nbsp; Nou producte
+	</h2>
+	<div class="col-md-12">
+		<form action="/products" method="POST">
+			{{ csrf_field() }}
+			<input type="hidden" name="list_id" value="{{ $list->id }}">
 
-		{{ csrf_field() }}
-
-		<input type="hidden" name="list_id" value="{{ $list->id }}">
-
-		<div class="form-group col-md-3">
-			<label for="name">Nom:</label>
-			<div class="input-group">
-				<input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
-			</div>
-		</div>
-
-		<div class="row form-group col-md-5">
-
-			<div class="col-md-6">
-				<label for="quantity">Quantitat:</label>
+			<div class="form-group">
+				<label for="name">Nom:</label>
 				<div class="input-group">
-					<input class="form-control" type="number" name="quantity" id="quantity" min="0">
+					<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+					<input class="form-control" type="text" name="name" id="name">
 				</div>
 			</div>
 
-			<div class="col-md-6">
-				<label for="units">Unitats:</label>
+			<div class="form-group row">
+				<div class="col-md-6">
+					<label for="quantity">Quantitat:</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+						<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0">
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<label for="units">Unitats:</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+						<select class="form-control" name="units" id="units">
+							<option value="unitats">Unitats</option>
+							<option value="Kilograms">Kilograms</option>
+							<option value="litres">Litres</option>
+							<option value="metres">Metres</option>
+							<option value="pack/s">Pack/s</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-md-6">
+					<label for="price">Preu:</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+						<input class="form-control" type="number" step="any" name="price" id="price" min="0">
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="asigned_to">Assignat a:</label>
 				<div class="input-group">
-					<select class="form-control" name="units" id="units">
-						<option value="unitats">Unitats</option>
-						<option value="Kilograms">Kilograms</option>
-						<option value="litres">Litres</option>
-						<option value="metres">Metres</option>
-						<option value="pack/s">Pack/s</option>
+					<span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+					<select class="form-control" name="assigned_to">
+							<option value="0">&nbsp;</option>
+							<option value="{{ $owner->owner }}">{{ $owner->name.' '.$owner->last_name }}</option>
+						@foreach($colaboradors as $colaborador)
+							<option value="{{ $colaborador->id }}">{{ $colaborador->name.' '.$colaborador->last_name }}</option>
+						@endforeach
 					</select>
 				</div>
 			</div>
 
-		</div>
-
-		<div class="form-group col-md-2">
-			<label for="price">Preu:</label>
-			<div class="input-group">
-				<input class="form-control" type="number" step="any" name="price" id="price" min="0">
+			<div class="form-group">
+				<button type="submit" class="btn btn-success text-center">
+					<i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp; Afegir
+				</button>
+				<a href="/lists/{{ $list->id }}" type="button" class="btn btn-danger">
+					<i class="fa fa-times" aria-hidden="true"></i>&nbsp; Cancel·lar
+				</a>
 			</div>
-		</div>
 
-		<div class="form-group col-md-2">
-			<label for="asigned_to">Assignat a:</label>
-			<div class="input-group">
-				<select class="form-control" name="assigned_to">
-						<option value="0">&nbsp;</option>
-						<option value="{{ $list->owner }}">{{ $owner->name }}</option>
-					@foreach($colaboradors as $colaborador)
-						<option value="{{ $colaborador->id }}">{{ $colaborador->name }}</option>
-					@endforeach
-				</select>
-			</div>
-		</div>
+			@include ('layouts.errors')
 
-		<div class="form-group col-md-2">
-			<button type="submit" class="btn btn-success text-center">
-				<i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp; Afegir producte
-			</button>
-		</div>
+		</form>
 
-		@include ('layouts.errors')
-
-	</form>
-
+	</div>
 </div>
-<!-- END FORM: Product create -->
+
+@endsection

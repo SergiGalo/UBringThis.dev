@@ -17,16 +17,20 @@
 		&nbsp; Edició producte
 	</h2>
 	<div class="col-md-12">
-		<form action="{{ action('ProductesController@update', $product->id) }}" method="POST">
+		<form action="/products/{{ $product->id }}" method="POST">
 			{{ method_field('PUT') }}
 			{{ csrf_field() }}
 			<input type="hidden" name="list_id" value="{{ $product->list_id }}">
 
 			<div class="form-group">
-				<label for="name">Nou nom:</label>
+				<label for="name">Nom:</label>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
-					<input class="form-control" type="text" name="name" id="name" value="{{ $product->name }}" placeholder="{{ $product->name }}">
+					@if(old('name'))
+						<input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
+					@else
+						<input class="form-control" type="text" name="name" id="name" value="{{ $product->name }}	">
+					@endif
 				</div>
 			</div>
 
@@ -35,7 +39,11 @@
 					<label for="quantity">Quantitat:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
-						<input class="form-control" type="number" name="quantity" id="quantity" min="0" value="{{ $product->quantity }}" placeholder="{{ $product->quantity }}">
+						@if(old('quantity'))
+							<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ old('quantity') }}">
+						@else
+							<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ $product->quantity }}">
+						@endif
 					</div>
 				</div>
 
@@ -43,7 +51,11 @@
 					<label for="units">Unitats:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
-						<select class="form-control" name="units" id="units" value="{{ $product->units }}" placeholder="{{ $product->units }}">
+						@if(old('units'))
+							<select class="form-control" name="units" id="units" value="{{ old('units') }}">
+						@else
+							<select class="form-control" name="units" id="units" value="{{ $product->units }}">
+						@endif
 							<option value="unitats">Unitats</option>
 							<option value="Kilograms">Kilograms</option>
 							<option value="litres">Litres</option>
@@ -59,34 +71,39 @@
 					<label for="price">Preu:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
-						<input class="form-control" type="number" step="any" name="price" id="price" min="0" value="{{ $product->price }}" placholder="{{ $product->price }}">
+						@if(old('price'))
+							<input class="form-control" type="number" step="any" name="price" id="price" min="0" value="{{ old('price') }}">
+						@else
+							<input class="form-control" type="number" step="any" name="price" id="price" min="0" value="{{ $product->price }}">
+						@endif
 					</div>
 				</div>
+			</div>
 
-				<div class="col-md-6">
-					<label for="asigned_to">Assignat a:</label>
-					<div class="input-group">
-						<select class="form-control" name="assigned_to">
-							@if ($product->assigned_to)
-								<option value="0">&nbsp;</option>
-							@else
-								<option value="0" selected>&nbsp;</option>
-							@endif
+			<div class="form-group">
+				<label for="asigned_to">Assignat a:</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+					<select class="form-control" name="assigned_to">
+						@if ($product->assigned_to)
+							<option value="0">&nbsp;</option>
+						@else
+							<option value="0" selected>&nbsp;</option>
+						@endif
 
-							@if ($product->assigned_to == $owner->owner)
-								<option value="{{ $owner->owner }}" selected>{{ $owner->name }}</option>
+						@if ($product->assigned_to == $owner->owner)
+							<option value="{{ $owner->owner }}" selected>{{ $owner->name.' '.$owner->last_name }}</option>
+						@else
+							<option value="{{ $owner->owner }}">{{ $owner->name.' '.$owner->last_name }}</option>
+						@endif
+						@foreach($colaboradors as $colaborador)
+							@if ($product->assigned_to == $colaborador->id)
+								<option value="{{ $colaborador->id }}" selected>{{ $colaborador->name.' '.$colaborador->last_name }}</option>
 							@else
-								<option value="{{ $owner->owner }}">{{ $owner->name }}</option>
+								<option value="{{ $colaborador->id }}">{{ $colaborador->name.' '.$colaborador->last_name }}</option>
 							@endif
-							@foreach($colaboradors as $colaborador)
-								@if ($product->assigned_to == $colaborador->id)
-									<option value="{{ $colaborador->id }}" selected>{{ $colaborador->name }}</option>
-								@else
-									<option value="{{ $colaborador->id }}">{{ $colaborador->name }}</option>
-								@endif
-							@endforeach
-						</select>
-					</div>
+						@endforeach
+					</select>
 				</div>
 			</div>
 

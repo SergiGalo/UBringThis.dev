@@ -61,8 +61,7 @@
 
 			<div class="form-group text-center">
 				<button type="submit" class="btn btn-primary">
-					<i class="fa fa-shopping-basket" aria-hidden="true"></i>
-					Guardar canvis
+					<i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp; Guardar canvis
 				</button>
 			</div>
 

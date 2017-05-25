@@ -36,10 +36,10 @@
 		</div>
 		</div>
 
-		<div class="container wrapper">
+		<div class="container">
 		<div class="row">
 
-			<div class="col-md-4 side-bar">
+			<div class="col-md-3 side-bar">
 
 				@section('sidebar')
 
@@ -47,7 +47,7 @@
 
 			</div>
 
-			<div class="col-md-8 content">
+			<div class="col-md-9 content">
 
 				@yield('content')
 

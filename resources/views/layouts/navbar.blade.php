@@ -17,6 +17,9 @@
 					<li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp; {{ Auth::user()->name }}</a></li>
 					<li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Configuració</a></li>
 					<li><a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp; Ajuda</a></li>
+				@else
+					<li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp; Login</a></li>
+					<li><a href="/register"><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp; Registre</a></li>
 				@endif
 			</ul>
 		</div>

@@ -1,29 +1,51 @@
 /* MAIN STRUCTURE */
 
 body {
-	--primary: red;
-	--secondary: blue;
-	background-color: #EEEEEE;
-	background: -webkit-linear-gradient(#EEEEEE , #FFFFFF); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#EEEEEE, #FFFFFF); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#EEEEEE, #FFFFFF); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#EEEEEE , #FFFFFF); /* Standard syntax */
+	--nav: #3A4750;
+	--bg: #D0F9B1;
+	background-color: var(--bg);
 	min-height: 100vh;
 	font-family: 'Allerta';
 	font-size: 16px;
 }
 
-.nav-bar {
-	background-color: #1D242B;
+.container {
+	margin: 50px 0 0 0;
+	width: 100%;
+}
+
+.navbar-inverse {
+	background-color: var(--nav);
 	color: #EEEEEE;
 }
 
-.wrapper {
-	margin: 50px 0 0 0;
+.welcome-wrapper {
+	width: 100%;
+	height: 50vh;
+	background: #2DC76A; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, #2DC76A 80%, #1DB954); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(left, #2DC76A 80%, #1DB954); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(left, #2DC76A 80%, #1DB954); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(left, #2DC76A 80%, #1DB954); /* Standard syntax */
+	color: #FAFAFA;
+	text-shadow: 5px 2px 10px #111111;
 }
 
-.content {
+.welcome-message {
+	margin: auto;
+	vertical-align: middle;
+}
 
+div .welcome-text {
+	font-size: 100px;
+}
+
+.welcome-icon {
+	color: #FFFB85; /* For browsers that do not support gradients */
+	color: -webkit-linear-gradient(left, #FFFB85, #1EE494); /* For Safari 5.1 to 6.0 */
+	color: -o-linear-gradient(left, #FFFB85, #1EE494); /* For Opera 11.1 to 12.0 */
+	color: -moz-linear-gradient(left, #FFFB85, #1EE494); /* For Firefox 3.6 to 15 */
+	color: linear-gradient(left, #FFFB85, #1EE494); /* Standard syntax */
 }
 
 .side-bar {
@@ -46,8 +68,14 @@ body {
 	color: #3c3c3c;
 }
 
-.fa-check-square-o {
-	color: green;
+.panel.panel-default {
+	margin: 100px auto;
+}
+
+.panel .panel-heading {
+	background-color: var(--nav);
+	color: #FAFAFA;
+	font-weight: bold;
 }
 
 /* SIDE BAR MENU */

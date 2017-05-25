@@ -17,9 +17,9 @@
 
 		<div class="btn-lists">
 			<span>
-				<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
+				<a class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
 					<i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
-				</button>
+				</a>
 			</span>
 			&nbsp;
 			<span>
@@ -37,6 +37,12 @@
 			<span>
 				<a href="" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-list-delete" data-list-id="{{ $list->id }}">
 					<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+				</a>
+			</span>
+			&nbsp;
+			<span>
+				<a href="/products/create/{{ $list->id }}" type="button" class="btn btn-primary">
+					<i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
 				</a>
 			</span>
 		</div>
@@ -71,14 +77,6 @@
 		</span>
 		&nbsp; {{ $list->title }}
 	</h2>
-
-	<div class="btn-new-product">
-		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCreateProduct" aria-expanded="false" aria-controls="collapseCreateProduct">
-			Nou producte
-		</button>
-	</div>
-
-	@include('products.create')
 
 	<div class="table-responsive">
 		<table class="table table-striped">
@@ -128,10 +126,10 @@
 								<div class="p-name col-md-12">
 									<h3>{{ $product->name }}</h3>
 								</div>
-								<div class="p-total col-md-8 text-left">
+								<div class="p-total col-md-6 text-left">
 									<p>{{ $product->quantity.' '.$product->units.' x '.$product->price.'€ = '.($product->quantity*$product->price).'€' }}</p>
 								</div>
-								<div class="p-assigned col-md-4">
+								<div class="p-assigned col-md-6">
 									<p><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
 										@if ($product->assigned_to)
 											@if ($product->assigned_to == $owner->owner)

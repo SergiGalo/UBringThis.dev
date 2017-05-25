@@ -11,16 +11,20 @@ use App\User;
 
 class ProductesController extends Controller
 {
-	// public function index($list_id)
-	// {
-	// 	//$user_id = Auth::user();
-	// 	return view('lists.products', array('list'=>'products'=>Producte::all()));
-	// }
+
+	public function create($id)
+	{
+		return view('products.create', array(
+			'list' => Lliste::findOrFail($id),
+			'owner' => User::getOwner($id),
+			'colaboradors' => User::getColaboradors($id)
+		));
+	}
 
 	public function store(Request $request)
 	{
 		$this->validate(request(), [
-			'name' => 'required|min:2|max:50',
+			'name' => 'required|min:2|max:100',
 			'quantity' => 'nullable|numeric',
 			'units' => 'nullable',
 			'price' => 'nullable|numeric',

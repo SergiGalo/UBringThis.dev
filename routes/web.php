@@ -21,15 +21,16 @@ Route::put('/lists/{id}', 'LlistesController@update');
 Route::delete('/lists/{id}', 'LlistesController@destroy');
 
 /* Productes */
-Route::post('/products/store', 'ProductesController@store');
+Route::get('/products/create/{id}', 'ProductesController@create');
+Route::post('/products', 'ProductesController@store');
 Route::get('/products/{p_id}/edit', 'ProductesController@edit');
 Route::put('/products/{p_id}', 'ProductesController@update');
 Route::delete('/products/{p_id}', 'ProductesController@destroy');
 
 /* Colaboradors */
-Route::get('/colaborations/{id}', 'ColaboradorsController@show');
+Route::get('/colaborations/{id}', 'ColaboradorsController@create');
 Route::post('/colaborations', 'ColaboradorsController@store');
-Route::delete('/colaborations/{id}', 'ColaboradorsController@destroy');
+Route::delete('/colaborations', 'ColaboradorsController@destroy');
 
 
 /* Registres */
@@ -37,6 +38,7 @@ Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
 
 /* Sessions */
+Route::get('/','SessionsController@index');
 Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy');

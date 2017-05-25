@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="col-md-offset-1 col-md-8">
+<div class="col-md-4">
 	<h2 class="sub-header">
 		<span class="fa-stack fa-lg">
 			<i class="fa fa-shopping-basket fa-stack-1x" aria-hidden="true"></i>

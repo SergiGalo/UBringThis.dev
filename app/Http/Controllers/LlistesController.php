@@ -52,17 +52,6 @@ class LlistesController extends Controller
 
 	public function show($id)
 	{
-		// $products = Producte::all()->where('list_id', '=', $id)->where('active', 1);
-		// $colaboradors = User::getColaboradors($id);
-
-		// foreach ($products as $product) {
-		// 	foreach ($colaboradors as $colaborador) {
-		// 		if ($product->assigned_to == $colaborador->id) {
-		// 			$product->assigned_to = $colaborador;
-		// 		}
-		// 	}
-		// }
-
 		return view('lists.show', array(
 			'list' => Lliste::findOrFail($id),
 			'owner' => User::getOwner($id),

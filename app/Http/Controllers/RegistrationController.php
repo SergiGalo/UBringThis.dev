@@ -12,7 +12,7 @@ class RegistrationController extends Controller
 			return view('registration.create');
 		}
 
-		public function store()
+		public function store(Request $request)
 		{
 			$this->validate(request(), [
 				'name' => 'required|min:2|max:150',
@@ -21,7 +21,17 @@ class RegistrationController extends Controller
 				'password' => 'required|min:6|confirmed'
 			]);
 
-			$user = User::create(request(['name', 'last_name', 'email', bcrypt('password')]));
+			$name = $request->input('name');
+			$last_name = $request->input('last_name');
+			$email = $request->input('email');
+			$password = bcrypt($request->input('password'));
+
+			$user = new User();
+			$user->name = $name;
+			$user->last_name = $last_name;
+			$user->email = $email;
+			$user->password = $password;
+			$user->save();
 
 			auth()->login($user);
 

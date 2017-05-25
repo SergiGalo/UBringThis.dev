@@ -14,35 +14,20 @@
 
 </head>
 <body>
-	<!--
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">UBringThis!</a>
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Dashboard</a></li>
-						<li><a href="#">Settings</a></li>
-						<li><a href="#">Profile</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	--->
-		@section('menus.sidebar')
 
-		@show
+		@include('layouts.navbar')
 
-		<div class="container">
-				@yield('content')
-		</div>
-		@include('menus.sidebar')
+	<div class="container">
+	<div class="row">
+
+			@yield('content')
+
+	</div>
+	</div>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="{{ URL::asset('js/ubringthis.js') }}"></script>
 </body>
 </html>
