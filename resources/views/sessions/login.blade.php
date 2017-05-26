@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<label for="email">E-mail:</label>
 					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+						<span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
 						<input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 					</div>
 				</div>
 
-				<div class="form-group text-center">
+				<div class="text-center">
 					<button type="submit" class="btn btn-success">
 						<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp; Accedir
 					</button>

@@ -65,4 +65,10 @@
 
 @section('content')
 
+<div class="background-icon">
+	<div class="icon">
+
+	</div>
+</div>
+
 @endsection

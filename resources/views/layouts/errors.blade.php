@@ -6,7 +6,9 @@
 
 			@foreach($errors->all() as $error)
 
-				<li>{{ $error }}</li>
+				<li class="list-group-error">
+					<i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp; {{ $error }}
+				</li>
 
 			@endforeach
 

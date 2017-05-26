@@ -84,7 +84,7 @@ return [
 		],
 		'string'               => 'El camp :attribute ha de ser una cadena de caràcters.',
 		'timezone'             => 'El camp :attribute ha de ser una zona vàlida.',
-		'unique'               => ':attribute ja ha estat registrat.',
+		'unique'               => 'El :attribute ja ha estat registrat.',
 		'uploaded'             => ':attribute ha fallat al pujar.',
 		'url'                  => 'El format :attribute és invàlid.',
 

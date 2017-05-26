@@ -1,8 +1,11 @@
 /* MAIN STRUCTURE */
 
 body {
-	--nav: #3A4750;
-	--bg: #D0F9B1;
+	--navbg: #303841;
+	--sidebar: #3A4750;
+	--maingreen: #2DC76A;
+	--bg: #FAFAFA;
+	--shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	background-color: var(--bg);
 	min-height: 100vh;
 	font-family: 'Allerta';
@@ -15,8 +18,8 @@ body {
 }
 
 .navbar-inverse {
-	background-color: var(--nav);
-	color: #EEEEEE;
+	background-color: var(--navbg);
+	box-shadow: var(--shadow);
 }
 
 .welcome-wrapper {
@@ -49,34 +52,69 @@ div .welcome-text {
 }
 
 .side-bar {
-	background: #383838; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(#383838, #343434); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#383838, #343434); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#383838, #343434); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#383838, #343434); /* Standard syntax */
+	background: var(--sidebar); /* For browsers that do not support gradients */
 	color: #FAFAFA;
 	font-weight: bold;
 	min-height: 100vh !important;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: var(--shadow);
 }
 
 .side-bar ul a.list-group-item {
-	color: #3c3c3c;
 }
 
 .side-bar div {
-	color: #3c3c3c;
 }
+
+.background-icon {
+	font-size: 300px;
+	color: #2DC76A;
+	margin: 100px auto;
+	text-shadow: var(--shadow);
+}
+
+div.icon {
+	margin: 0 auto;
+	width: 100%;
+}
+
+
+
+/* LOGIN REGISTER FORMS */
 
 .panel.panel-default {
 	margin: 100px auto;
+	box-shadow: var(--shadow);
+	border: 1px solid var(--sidebar);
+	border-radius: 0px !important;
 }
 
 .panel .panel-heading {
-	background-color: var(--nav);
+	background-color: var(--sidebar);
 	color: #FAFAFA;
 	font-weight: bold;
+	border-radius: 0px !important;
 }
+
+.panel-body {
+	background-color: #e7fff0;
+}
+
+.form-control {
+	border-radius: 0px !important;
+}
+
+.form-control:focus {
+	border-color: #1DB954;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(29, 185, 84, 0.6)
+}
+
+.input-group-addon {
+	background-color: var(--sidebar);
+	border-radius: 0px !important;
+	color: #FAFAFA;
+}
+
+
 
 /* SIDE BAR MENU */
 
@@ -111,6 +149,8 @@ li .list-group-item .list-item {
 	margin: 0px;
 }
 
+
+
 /* ANCHORS / LINKS */
 a {
 	text-decoration: none;
@@ -136,6 +176,8 @@ a.list-group-item:hover, a.list-group-item:active {
 	color: #1D242B;
 }
 
+
+
 /* TABLES */
 
 .toggle-input {
@@ -150,14 +192,22 @@ td .btn-product span {
 	margin-right: 10px;
 }
 
+
+
 /* BUTTONS */
 
 .btn {
-	border: 1px solid;
 	color: white;
-	padding: 10px 20px;
+	padding: 5px 15px;
+	margin: 5px;
+	border-radius: 0px !important;
 	text-align: center;
-	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+}
+
+.btn-success {
+	background-color: #FAFAFA;
+	border-color: inherit;
+	color: #4cae4c;
 }
