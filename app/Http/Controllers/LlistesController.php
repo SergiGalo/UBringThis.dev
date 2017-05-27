@@ -38,6 +38,7 @@ class LlistesController extends Controller
 			'title' => 'required|min:2',
 			'event_date' => 'required|date',
 			'event_time' => 'required',
+			'description' => 'max:500'
 		]);
 
 		$list = new Lliste();
@@ -45,6 +46,7 @@ class LlistesController extends Controller
 		$list->owner = auth()->user()->id;
 		$list->event_date = $request->input('event_date').' '.$request->input('event_time').':00';
 		$list->location = $request->input('location');
+		$list->description = $request->input('description');
 		$list->save();
 
 		return redirect('/lists');
@@ -71,6 +73,7 @@ class LlistesController extends Controller
 			'title' => 'required|min:2',
 			'event_date' => 'required|date',
 			'event_time' => 'required',
+			'description' => 'max:500'
 		]);
 
 		$list = Lliste::findOrFail($id);
@@ -78,6 +81,7 @@ class LlistesController extends Controller
 		$list->owner = auth()->user()->id;
 		$list->event_date = $request->input('event_date').' '.$request->input('event_time').':00';
 		$list->location = $request->input('location');
+		$list->description = $request->input('description');
 		$list->save();
 
 		return redirect() -> action('LlistesController@show', $list->id);

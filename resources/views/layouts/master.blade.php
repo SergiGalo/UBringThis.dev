@@ -36,7 +36,7 @@
 		</div>
 		</div>
 
-		<div class="container">
+		<div class="container content">
 		<div class="row">
 
 			<div class="col-md-3 side-bar">

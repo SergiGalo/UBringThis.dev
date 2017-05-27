@@ -150,6 +150,8 @@ return [
 				'price'                 => 'preu',
 				'assigned_to'           => 'assignat a',
 				'units'                 => 'unitats',
+				'event_date'            => 'dia',
+				'event_time'            => 'hora'
 		],
 
 ];

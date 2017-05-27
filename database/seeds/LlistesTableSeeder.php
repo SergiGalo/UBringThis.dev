@@ -22,6 +22,9 @@ class LlistesTableSeeder extends Seeder
 					'owner' => $owner->id,
 					'event_date' => Carbon::now(),
 					'location' => $faker->city,
+					'description' => $faker->paragraph,
+					'created_at' => $faker->dateTime($max = 'now'),
+					'updated_at' => $faker->dateTime($min = 'now')
 				]);
 			}
 		}

@@ -20,7 +20,7 @@ class CreateProductesTable extends Migration
 			$table->integer('list_id')->unsigned();
 			$table->boolean('confirmed')->default(0);
 			$table->string('name')->required();
-			$table->integer('quantity')->nullable();
+			$table->decimal('quantity', 5, 2)->nullable();
 			$table->string('units')->nullable();
 			$table->decimal('price', 5, 2)->nullable();
 			$table->integer('assigned_to')->nullable()->unsigned();

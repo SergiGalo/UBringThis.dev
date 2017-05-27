@@ -21,6 +21,7 @@ class CreateLlistesTable extends Migration
 			$table->integer('owner')->unsigned();
 			$table->dateTime('event_date');
 			$table->string('location')->nullable();
+			$table->longText('description')->nullable();
 			$table->timestamps();
 			$table->foreign('owner')->references('id')->on('users');
 		});

@@ -1,73 +1,104 @@
-@extends('layouts.master')
+@extends('layouts.welcome')
 
 @section('page_title', 'Edició llista')
 
-@section('sidebar')
-
-@endsection
 
 @section('content')
 
+@if ( count(old()) > 0 )
+<?php
+	$data = old('event_date');
+	$hora = old('event_time');
+?>
+@else
 <?php
 	$data = substr($list->event_date, 0, 10);
 	$hora = substr($list->event_date, 11, 5);
 ?>
+@endif
 
-<div class="col-md-offset-1 col-md-8">
-	<h2 class="sub-header">
-		<span class="fa-stack fa-lg">
-			<i class="fa fa-shopping-basket fa-stack-1x" aria-hidden="true"></i>
-			<i class="fa fa-square-o fa-stack-2x" aria-hidden="true"></i>
-		</span>
-		&nbsp; Edició llista
-	</h2>
-	<div class="col-md-12">
-		<form action="{{ action('LlistesController@update', $list->id) }}" method="POST">
+<div class="col-md-4 col-md-offset-4">
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<span class="fa-stack fa-lg">
+				<i class="fa fa-shopping-cart fa-stack-1x" aria-hidden="true"></i>
+				<i class="fa fa-square-o fa-stack-2x" aria-hidden="true"></i>
+			</span>
+			&nbsp; Edició llista
+		</div>
+
+		<div class="panel-body">
+			<form action="{{ action('LlistesController@update', $list->id) }}" method="POST">
 			{{ method_field('PUT') }}
 			{{ csrf_field() }}
 			<div class="form-group">
-				<label for="title">Nou títol:</label>
+				<label for="title">Títol:</label>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
-					<input class="form-control" type="text" name="title" id="title" value="{{ $list->title }}" placeholder="{{ $list->title }}">
+					@if ( count(old()) > 0 )
+						<input class="form-control" type="text" name="title" id="title" value="{{ old('title') }}" placeholder="{{ old('title') }}" required>
+					@else
+						<input class="form-control" type="text" name="title" id="title" value="{{ $list->title }}" placeholder="{{ $list->title }}" required>
+					@endif
 				</div>
 			</div>
 
 			<div class="row form-group">
 				<div class="col-md-7">
-					<label for="event_date">Nou dia:</label>
+					<label for="event_date">Dia:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-						<input class="form-control" type="date" name="event_date" id="event_date" value="{{ $data }}" placeholder="{{ $data }}">
+							<input class="form-control" type="date" name="event_date" id="event_date" value="{{ $data }}" placeholder="{{ $data }}" required>
 					</div>
 				</div>
 
 				<div class="col-md-5">
-					<label for="event_time">Nova hora:</label>
+					<label for="event_time">Hora:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-						<input class="form-control" type="time" name="event_time" id="event_time" value="{{ $hora }}" placeholder="{{ $hora }}">
+						<input class="form-control" type="time" name="event_time" id="event_time" value="{{ $hora }}" placeholder="{{ $hora }}" required>
 					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="location">Nova localització:</label>
+				<label for="location">Localització:</label>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-					<input class="form-control" type="text" name="location" id="location" value="{{ $list->location }}" placeholder="{{ $list->location }}">
+					@if ( count(old()) > 0 )
+						<input class="form-control" type="text" name="location" id="location" value="{{ $list->location }}" placeholder="{{ old('location') }}">
+					@else
+						<input class="form-control" type="text" name="location" id="location" value="{{ $list->location }}" placeholder="{{ $list->location }}">
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="description">Descripció:</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-info" aria-hidden="true"></i></span>
+					@if ( count(old()) > 0 )
+						<textarea class="form-control" rows="7" name="description" id="description" placeholder="{{ $list->description }}">{{ old('description') }}</textarea>
+					@else
+						<textarea class="form-control" rows="7" name="description" id="description" placeholder="{{ $list->description }}">{{ $list->description }}</textarea>
+					@endif
 				</div>
 			</div>
 
 			<div class="form-group text-center">
-				<button type="submit" class="btn btn-primary">
+				<button type="submit" class="btn btn-success">
 					<i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp; Guardar canvis
 				</button>
+				<a href="/lists/{{ $list->id }}" type="button" class="btn btn-danger">
+					<i class="fa fa-times" aria-hidden="true"></i>&nbsp; Cancel·lar
+				</a>
 			</div>
 
 			@include ('layouts.errors')
 
 		</form>
+		</div>
 
 	</div>
 </div>
