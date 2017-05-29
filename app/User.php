@@ -46,6 +46,8 @@ class User extends Authenticatable
 
 		public static function getUserStats()
 		{
+			//$chart = DB::table('llistes')->where('llistes.owner', auth()->user()->id)->groupBy('event_date')->count();
+
 			$stats = array (
 				"total_lists" => DB::table('llistes')->where('llistes.owner', auth()->user()->id)->count(),
 				"total_lists_active" => DB::table('llistes')->where('llistes.owner', auth()->user()->id)->where('llistes.active', 1)->count(),
@@ -55,4 +57,6 @@ class User extends Authenticatable
 
 			return $stats;
 		}
+
+		
 }

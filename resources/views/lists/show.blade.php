@@ -183,8 +183,83 @@
 </div>
 
 <div class="col-md-5 list-graphs">
-	<div class="side-bar">
 
+	<div class="list-info-item">
+		<div><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i>&nbsp; Gràfics:</div>
+	</div>
+
+	<div class="chart-container">
+		<canvas class="chart-item" id="productPerson" width="150" height="80"></canvas>
+		<script>
+			var labels = <?php echo $data_labels_name; ?>;
+			var data = <?php echo $data_labels_count; ?>;
+
+			var ctx = document.getElementById("productPerson");
+			var myChart = new Chart(ctx, {
+					type: 'doughnut',
+					data: {
+							labels: labels,
+							datasets: [{
+									label: '# productes/persona',
+									data: data,
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.5)',
+										'rgba(54, 162, 235, 0.5)',
+										'rgba(255, 206, 86, 0.5)',
+										'rgba(75, 192, 192, 0.5)',
+										'rgba(153, 102, 255, 0.5)',
+										'rgba(255, 159, 64, 0.5)'
+									],
+									borderColor: [
+										'rgba(255,99,132,1)',
+										'rgba(54, 162, 235, 1)',
+										'rgba(255, 206, 86, 1)',
+										'rgba(75, 192, 192, 1)',
+										'rgba(153, 102, 255, 1)',
+										'rgba(255, 159, 64, 1)'
+									],
+									borderWidth: 1
+							}]
+					},
+			});
+		</script>
+	</div>
+
+	<div class="chart-container">
+		<canvas class="chart-item" id="pricePerson" width="150" height="100"></canvas>
+		<script>
+			var labels = <?php echo $data_labels_name; ?>;
+			var data = <?php echo $data_labels_count; ?>;
+
+			var ctx = document.getElementById("pricePerson");
+			var myChart = new Chart(ctx, {
+					type: 'doughnut',
+					data: {
+							labels: labels,
+							datasets: [{
+									label: '# productes/persona',
+									data: data,
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.5)',
+										'rgba(54, 162, 235, 0.5)',
+										'rgba(255, 206, 86, 0.5)',
+										'rgba(75, 192, 192, 0.5)',
+										'rgba(153, 102, 255, 0.5)',
+										'rgba(255, 159, 64, 0.5)'
+									],
+									borderColor: [
+										'rgba(255,99,132,1)',
+										'rgba(54, 162, 235, 1)',
+										'rgba(255, 206, 86, 1)',
+										'rgba(75, 192, 192, 1)',
+										'rgba(153, 102, 255, 1)',
+										'rgba(255, 159, 64, 1)'
+									],
+									borderWidth: 1
+							}]
+					},
+			});
+		</script>
 	</div>
 </div>
 

@@ -178,7 +178,7 @@ div.list-group-item li.list-info-item:last-of-type {
 
 ul.lists-ul a.list-group-item {
 	padding: 10px;
-	background-color: #EDEDED;
+	background-color: white;
 	border: 1px solid #1DB954;
 	color: var(--navbg);
 	text-shadow: var(--tshadow);
@@ -267,7 +267,7 @@ div.btn-lists {
 }
 
 .btn-product-edit .btn.btn-warning {
-	background-color: #EDEDED;
+	background-color: inherit;
 	color: #eea236;
 	padding: 0 5px;
 	text-align: center;
@@ -285,7 +285,7 @@ div.btn-lists {
 }
 
 .btn-product-delete .btn.btn-danger {
-	background-color: #EDEDED;
+	background-color: inherit;
 	color: #d43f3a;
 	padding: 0 5px;
 	text-align: center;
@@ -335,8 +335,8 @@ div.products-list-container {
 
 div.p-body {
 	margin-top: -1px;
-	background-color: #EDEDED;
-	border: 1px solid var(--maingreen);
+	background-color: white;
+	border: 1px solid #DDDDDD;
 	padding: 15px;
 }
 
@@ -385,6 +385,7 @@ div.p-footer .p-updated {
 div.stats-item {
 	padding: 10px 0;
 	border-bottom: 1px solid var(--sidebar);
+	display: block;
 }
 
 div.stats-item:last-of-type {
@@ -392,4 +393,18 @@ div.stats-item:last-of-type {
 }
 
 div.stats-item div {
+	display: inline;
+}
+
+div.chart-container {
+	margin: 20px auto;
+}
+
+canvas {
+	padding: 20px;
+	border: 1px solid #DDDDDD;
+}
+
+.list-graphs div.list-info-item {
+	margin-top:104px;
 }

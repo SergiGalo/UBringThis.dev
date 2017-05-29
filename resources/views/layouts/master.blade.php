@@ -22,6 +22,8 @@
 		<link href='//fonts.googleapis.com/css?family=Amiko' rel='stylesheet'>
 		<link href='//fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
 
+		<script type="text/javascript" src="{{ URL::asset('js/Chart.js') }}"></script>
+
 		<!-- UBringThis! CSS -->
 		<link rel="stylesheet" href="/css/ubringthis.css">
 
@@ -58,8 +60,6 @@
 
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-		<script type="text/javascript" src="{{ URL::asset('js/ubringthis.js') }}"></script>
 
 	</body>
 </html>
