@@ -23,13 +23,13 @@
 				<input type="hidden" name="list_id" value="{{ $product->list_id }}">
 
 				<div class="form-group">
-					<label for="name">Nom:</label>
+					<label for="name">*Nom:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
 						@if ( count(old()) > 0 )
-							<input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
+							<input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="nom del producte">
 						@else
-							<input class="form-control" type="text" name="name" id="name" value="{{ $product->name }}">
+							<input class="form-control" type="text" name="name" id="name" value="{{ $product->name }}" placeholder="nom del producte">
 						@endif
 					</div>
 				</div>
@@ -40,9 +40,9 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-list-ol" aria-hidden="true"></i></span>
 							@if(old('quantity'))
-								<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ old('quantity') }}">
+								<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ old('quantity') }}" placeholder="nombre enter o decimal">
 							@else
-								<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ $product->quantity }}">
+								<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ $product->quantity }}" placeholder="enter o decimal">
 							@endif
 						</div>
 					</div>
@@ -117,6 +117,22 @@
 						</select>
 					</div>
 				</div>
+
+				@if ( Auth::user()->id == $owner->owner )
+					<div class="form-check">
+				@else
+					<div class="invisible">
+				@endif
+						<label for="editable"></label>
+						@if ( old('editable') == 1 OR $product->editable == 1 )
+							<input type="checkbox" name="editable" id="editable" value="1" checked>
+						@else
+							<input type="checkbox" name="editable" id="editable" value="1">
+						@endif
+						&nbsp; Permetre als col·laboradors editar aquest producte.
+					</div>
+
+				<p>(*) Camps obligatoris.</p>
 
 				<div class="form-group text-center">
 					<button type="submit" class="btn btn-success text-center">

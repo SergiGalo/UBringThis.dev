@@ -9,15 +9,15 @@
 	<div class="btn-lists">
 		<span>
 			<a href="/lists/create" type="button" class="btn btn-success">
-				<i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+				<i class="fa fa-cart-plus fa-2x fa-fw" aria-hidden="true"></i>
 			</a>
 		</span>
 	</div>
 
 	<div class="lists-wrapper">
-		<ul class="list-details">
+		<ul class="lists-ul">
 
-			<li class="list-info">
+			<li class="lists-own-title">
 				<p>
 					<i class="fa fa-sticky-note" aria-hidden="true"></i>&nbsp; Llistes:
 				</p>
@@ -31,19 +31,20 @@
 				?>
 					<a class="list-group-item" href="/lists/{{ $list->id }}">
 						<li class="list-item">
-							<p class="list-item-name">
+							<p class="list-item-name" style="font-size: 20px;">
 								<span class="fa-stack fa-lg">
 									<i class="fa fa-shopping-cart fa-stack-1x" aria-hidden="true"></i>
 									<i class="fa fa-square-o fa-stack-2x" aria-hidden="true"></i>
 								</span>
-								&nbsp; {{ $list->title }}
+								{{ $list->title }}
 							</p>
 							<span class="list-item-date">
-								<i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ $date }}
+								<i class="fa fa-calendar" aria-hidden="true"></i>
+								<p>{{ $date }}</p>
 							</span>
-							&nbsp;
 							<span class="list-item-date">
-								<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; {{ $time }}
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+								<p>{{ $time }}</p>
 							</span>
 						</li>
 					</a>

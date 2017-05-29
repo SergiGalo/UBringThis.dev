@@ -36,9 +36,13 @@ Route::delete('/colaborations', 'ColaboradorsController@destroy');
 /* Registres */
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
+Route::get('/profile', 'RegistrationController@edit');
+Route::put('/profile', 'RegistrationController@update');
+Route::get('/stats', 'RegistrationController@stats');
+
 
 /* Sessions */
-Route::get('/','SessionsController@index');
+Route::get('/welcome','SessionsController@index');
 Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy');

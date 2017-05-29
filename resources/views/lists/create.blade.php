@@ -29,16 +29,16 @@
 			{{ csrf_field() }}
 
 			<div class="form-group">
-				<label for="title">Títol:</label>
+				<label for="title">*Títol:</label>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
-					<input class="form-control" type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Nom de la llista" required focus>
+					<input class="form-control" type="text" name="title" id="title" value="{{ old('title') }}" placeholder="títol de la llista/esdeveniment" required focus>
 				</div>
 			</div>
 
 			<div class="row form-group">
 				<div class="col-md-7">
-					<label for="event_date">Dia:</label>
+					<label for="event_date">*Dia:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
 						@if ( count(old()) > 0 )
@@ -50,7 +50,7 @@
 				</div>
 
 				<div class="col-md-5">
-					<label for="event_time">Hora:</label>
+					<label for="event_time">*Hora:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
 						@if ( count(old()) > 0 )
@@ -65,7 +65,9 @@
 			<div class="form-group">
 				<label for="location">Localització:</label>
 				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+					<span class="input-group-addon">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+					</span>
 					<input class="form-control" type="text" name="location" id="location" placeholder="Adreça o ubicació de l'esdeveniment" value="{{ old('location') }}">
 				</div>
 			</div>
@@ -77,6 +79,8 @@
 					<textarea class="form-control" rows="7" name="description" id="description" placeholder="Descripció o detalls referents a l'esdeveniment">{{ old('description') }}</textarea>
 				</div>
 			</div>
+
+			<p>(*) Camps obligatoris.</p>
 
 			<div class="form-group text-center">
 				<button type="submit" class="btn btn-success">

@@ -7,6 +7,7 @@ body {
 	--bglight: #D8EBB5;
 	--dshadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 	--tshadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	--gshadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
 	background-color: var(--bg);
 	min-height: 100vh;
 	font-family: 'Allerta';
@@ -120,12 +121,6 @@ textarea.form-control {
 	box-shadow: var(--dshadow);
 }
 
-.side-bar ul a.list-group-item {
-}
-
-.side-bar div {
-}
-
 ul {
 	margin: 0;
 	padding: 0;
@@ -133,7 +128,7 @@ ul {
 }
 
 div.lists-wrapper .lists-ul .lists-own-title p {
-	font-size: 20px;
+	font-size: 22px;
 	font-weight: bold;
 	color: var(--navbg);
 	padding: 10px 0 0 0;
@@ -149,17 +144,31 @@ ul.lists-ul a.list-group-item {
 	text-shadow: var(--tshadow);
 }
 
-a.list-group-item:hover {
+ul.lists-ul a.list-group-item:hover {
 	background-color: var(--maingreen);
 	box-shadow: var(--dshadow);
 	color: var(--bg);
 }
 
-.list-group-item .list-item {
+div.list-group-item{
+	padding: 15px 20px;
+}
+
+div.list-group-item li.list-item {
 	font-size: 22px;
 }
 
-.list-group-item .list-item p.list-item-name {
+div.list-group-item li.list-info-item {
+	font-size: 18px;
+	padding: 5px 0;
+	border-bottom: 1px solid #EDEDED;
+}
+
+div.list-group-item li.list-info-item:last-of-type {
+	border: none;
+}
+
+.list-group-item li.list-item p.list-item-name {
 	margin: 0;
 }
 
@@ -167,12 +176,22 @@ a.list-group-item:hover {
 	font-size: 15px;
 }
 
-ul.lists-ul li.list-group-item {
+ul.lists-ul a.list-group-item {
 	padding: 10px;
-	background-color: #DEFBC2;
+	background-color: #EDEDED;
 	border: 1px solid #1DB954;
 	color: var(--navbg);
 	text-shadow: var(--tshadow);
+}
+
+span.list-item-date {
+	margin-right: 10px;
+	display: inline-block;
+}
+
+span.list-item-date p {
+	margin-left: 5px;
+	display: inline;
 }
 
 
@@ -196,8 +215,6 @@ div.btn-lists {
 .btn-lists a.btn {
 	padding: inherit 5px;
 	margin: 0 -5px 5px 0;
-	width:
-
 }
 
 .btn {
@@ -249,17 +266,130 @@ div.btn-lists {
 	color: #d43f3a;
 }
 
+.btn-product-edit .btn.btn-warning {
+	background-color: #EDEDED;
+	color: #eea236;
+	padding: 0 5px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	border: 1px solid #eea236;
+	border-color: inherit;
+}
+
+.btn-product-edit .btn.btn-warning:hover {
+	color: #FAFAFA;
+	background-color: #eea236;
+	border-color: #eea236;
+	box-shadow: var(--dshadow);
+}
+
+.btn-product-delete .btn.btn-danger {
+	background-color: #EDEDED;
+	color: #d43f3a;
+	padding: 0 5px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	border: 1px solid #d43f3a;
+	border-color: inherit;
+}
+
+.btn-product-delete .btn.btn-danger:hover {
+	color: #FAFAFA;
+	background-color: #d43f3a;
+	border-color: #d43f3a;
+	box-shadow: var(--dshadow);
+}
+
 
 /* TABLES */
-
-.toggle-input {
-	display: none;
+div.sub-header {
+	font-size: 30px;
+	display: inline-block;
+	margin: 25px 0;
+	text-shadow: var(--tshadow);
 }
 
-td .btn-product {
+div.sub-header div.list-title-icon {
 	font-size: 20px;
+	display: inline-block;
+	margin: 0;
 }
 
-td .btn-product span {
-	margin-right: 10px;
+div.sub-header div.list-title-text {
+	display: inline-block;
+}
+
+div.list-info-item {
+	padding: 15px 20px;
+	font-size: 18px;
+	padding: 5px 0;
+	border-bottom: 1px solid #EDEDED;
+	text-shadow: var(--tshadow);
+}
+
+div.products-list-container {
+	margin-top: 20px;
+}
+
+div.p-body {
+	margin-top: -1px;
+	background-color: #EDEDED;
+	border: 1px solid var(--maingreen);
+	padding: 15px;
+}
+
+div.p-header {
+	margin-bottom: 5px;
+}
+
+div.p-name {
+	font-size: 18px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+div .btn-product {
+	font-size: 20px;
+	float: right;
+}
+
+div.p-info {
+	font-size: 15px;
+	display: inline-block;
+}
+
+div.p-info .p-total {
+	display: inline-block;
+	margin-right: 50px;
+}
+
+div.p-footer .p-assigned {
+	font-size: 16px;
+	display: inline-block;
+	width: 50%;
+}
+
+div.p-footer .p-updated {
+	font-size: 14px;
+	margin-left: 20px;
+	display: inline-block;
+	float: right;
+}
+
+.g-shadow {
+	text-shadow: var(--gshadow);
+}
+
+div.stats-item {
+	padding: 10px 0;
+	border-bottom: 1px solid var(--sidebar);
+}
+
+div.stats-item:last-of-type {
+	border: none;
+}
+
+div.stats-item div {
 }

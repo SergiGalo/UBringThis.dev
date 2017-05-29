@@ -22,10 +22,10 @@
 				<input type="hidden" name="list_id" value="{{ $list->id }}">
 
 				<div class="form-group">
-					<label for="name">Nom:</label>
+					<label for="name">*Nom:</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
-						<input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
+						<input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="nom del producte" required>
 					</div>
 				</div>
 
@@ -34,7 +34,7 @@
 						<label for="quantity">Quantitat:</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-list-ol" aria-hidden="true"></i></span>
-							<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ old('quantity') }}">
+							<input class="form-control" type="number" step="any" name="quantity" id="quantity" min="0" value="{{ old('quantity') }}" placeholder="nombre enter o decimal">
 						</div>
 					</div>
 
@@ -78,7 +78,7 @@
 						<label for="price">Preu:</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-eur" aria-hidden="true"></i></span>
-							<input class="form-control" type="number" step="any" name="price" id="price" min="0" value="{{ old('price') }}">
+							<input class="form-control" type="number" step="any" name="price" id="price" min="0" value="{{ old('price') }}" placeholder="preu del producte">
 						</div>
 					</div>
 				</div>
@@ -104,6 +104,18 @@
 						</select>
 					</div>
 				</div>
+
+				@if ( Auth::user()->id == $owner->owner )
+					<div class="form-check">
+				@else
+					<div class="invisible">
+				@endif
+						<label for="editable"></label>
+						<input type="checkbox" name="editable" id="editable" value="1" checked>
+						&nbsp; Permetre als col·laboradors editar aquest producte.
+					</div>
+
+				<p>(*) Camps obligatoris.</p>
 
 				<div class="form-group text-center">
 					<button type="submit" class="btn btn-success text-center">

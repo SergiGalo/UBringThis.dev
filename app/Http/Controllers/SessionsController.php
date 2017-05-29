@@ -37,6 +37,6 @@ class SessionsController extends Controller
 	{
 		auth()->logout();
 
-		return redirect('/');
+		return redirect('/welcome');
 	}
 }

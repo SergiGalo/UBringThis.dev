@@ -23,7 +23,6 @@ class ProductesController extends Controller
 
 	public function store(Request $request)
 	{
-
 		$this->validate(request(), [
 			'name' => 'required|min:2|max:100',
 			'quantity' => 'nullable|numeric',
@@ -35,6 +34,7 @@ class ProductesController extends Controller
 		if ($request->input('quantity') == '') { $quantity = 0; } else { $quantity = $request->input('quantity'); }
 		if ($request->input('price') == '') { $price = 0.00; } else { $price = $request->input('price'); }
 		if ($request->input('assigned_to') == 0) { $assigned_to = null; } else { $assigned_to = $request->input('assigned_to'); }
+		if ($request->input('editable') == null) { $editable = 0; } else { $editable = 1; }
 
 		$product = new Producte();
 		$product->list_id = $request->input('list_id');
@@ -43,6 +43,7 @@ class ProductesController extends Controller
 		$product->units = $request->input('units');
 		$product->price = $price;
 		$product->assigned_to = $assigned_to;
+		$product->editable = $editable;
 		$product->save();
 
 		return redirect('/lists/'.$request->input('list_id'));
@@ -72,6 +73,7 @@ class ProductesController extends Controller
 		if ($request->input('quantity') == '') { $quantity = 0; } else { $quantity = $request->input('quantity'); }
 		if ($request->input('price') == '') { $price = 0.00; } else { $price = $request->input('price'); }
 		if ($request->input('assigned_to') == 0) { $assigned_to = null; } else { $assigned_to = $request->input('assigned_to'); }
+		if ($request->input('editable') == null) { $editable = 0; } else { $editable = 1; }
 
 		$product = Producte::findOrFail($id);
 		$product->list_id = $request->input('list_id');
@@ -80,6 +82,7 @@ class ProductesController extends Controller
 		$product->units = $request->input('units');
 		$product->price = $price;
 		$product->assigned_to = $assigned_to;
+		$product->editable = $editable;
 		$product->save();
 
 		return redirect('/lists/'.$request->input('list_id'));

@@ -18,7 +18,7 @@ class CreateProductesTable extends Migration
 			$table->increments('id');
 			$table->boolean('active')->default(1);
 			$table->integer('list_id')->unsigned();
-			$table->boolean('confirmed')->default(0);
+			$table->boolean('editable')->default(1);
 			$table->string('name')->required();
 			$table->decimal('quantity', 5, 2)->nullable();
 			$table->string('units')->nullable();

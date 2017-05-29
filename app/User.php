@@ -43,4 +43,16 @@ class User extends Authenticatable
 																 ->first();
 			return $owner;
 		}
+
+		public static function getUserStats()
+		{
+			$stats = array (
+				"total_lists" => DB::table('llistes')->where('llistes.owner', auth()->user()->id)->count(),
+				"total_lists_active" => DB::table('llistes')->where('llistes.owner', auth()->user()->id)->where('llistes.active', 1)->count(),
+				"total_lists_deleted" => DB::table('llistes')->where('llistes.owner', auth()->user()->id)->where('llistes.active', 0)->count(),
+				"total_colab" => DB::table('colaboradors')->where('colaboradors.user_id', auth()->user()->id)->count(),
+			);
+
+			return $stats;
+		}
 }

@@ -11,7 +11,7 @@
 $(document).ready(function() {
 
 		$('.btn-product-delete').click( function() {
-			var row = $(this).parents('tr');
+			var row = $(this).parents('.p-body');
 			var product_id = row.data('product-id');
 			var form = $('#form-product-delete');
 			var val = $('#product_id').val(product_id).serialize();
