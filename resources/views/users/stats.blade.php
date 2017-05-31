@@ -50,7 +50,7 @@
 
 			<div class="stats-item">
 				<div class="text-left">
-					Total col·laboracions:
+					Col·laboracions:
 				</div>
 				<div class="text-right">
 					{{ $stats['total_colab']}}
@@ -58,7 +58,7 @@
 			</div>
 
 			<div class="stats-item">
-				Historial de llistes dels últims mesos:
+				Historial de llistes dels últims 6 mesos:
 			</div>
 			<canvas id="userChart" width="400" height="250"></canvas>
 

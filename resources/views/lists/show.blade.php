@@ -171,9 +171,13 @@
 										@endif
 								</div>
 
-								<div class="p-updated text-right">
+								<div class="p-updated">
 									<div class="text-right">
-										<i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ $product->updated_at }}</div>
+										<i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ $product->updated_at }}
+									</div>
+									<div class="text-right">
+										({{ $product->edited_by }})
+									</div>
 								</div>
 							</div>
 						</div>
@@ -189,78 +193,79 @@
 	</div>
 
 	<div class="chart-container">
+		Productes per persona (%):
 		<canvas class="chart-item" id="productPerson" width="150" height="80"></canvas>
-		<script>
-			var labels = <?php echo $data_labels_name; ?>;
-			var data = <?php echo $data_labels_count; ?>;
-
-			var ctx = document.getElementById("productPerson");
-			var myChart = new Chart(ctx, {
-					type: 'doughnut',
-					data: {
-							labels: labels,
-							datasets: [{
-									label: '# productes/persona',
-									data: data,
-									backgroundColor: [
-										'rgba(255, 99, 132, 0.5)',
-										'rgba(54, 162, 235, 0.5)',
-										'rgba(255, 206, 86, 0.5)',
-										'rgba(75, 192, 192, 0.5)',
-										'rgba(153, 102, 255, 0.5)',
-										'rgba(255, 159, 64, 0.5)'
-									],
-									borderColor: [
-										'rgba(255,99,132,1)',
-										'rgba(54, 162, 235, 1)',
-										'rgba(255, 206, 86, 1)',
-										'rgba(75, 192, 192, 1)',
-										'rgba(153, 102, 255, 1)',
-										'rgba(255, 159, 64, 1)'
-									],
-									borderWidth: 1
-							}]
-					},
-			});
-		</script>
 	</div>
 
 	<div class="chart-container">
+		Preu per persona (%):
 		<canvas class="chart-item" id="pricePerson" width="150" height="100"></canvas>
-		<script>
-			var labels = <?php echo $data_labels_name; ?>;
-			var data = <?php echo $data_labels_count; ?>;
-
-			var ctx = document.getElementById("pricePerson");
-			var myChart = new Chart(ctx, {
-					type: 'doughnut',
-					data: {
-							labels: labels,
-							datasets: [{
-									label: '# productes/persona',
-									data: data,
-									backgroundColor: [
-										'rgba(255, 99, 132, 0.5)',
-										'rgba(54, 162, 235, 0.5)',
-										'rgba(255, 206, 86, 0.5)',
-										'rgba(75, 192, 192, 0.5)',
-										'rgba(153, 102, 255, 0.5)',
-										'rgba(255, 159, 64, 0.5)'
-									],
-									borderColor: [
-										'rgba(255,99,132,1)',
-										'rgba(54, 162, 235, 1)',
-										'rgba(255, 206, 86, 1)',
-										'rgba(75, 192, 192, 1)',
-										'rgba(153, 102, 255, 1)',
-										'rgba(255, 159, 64, 1)'
-									],
-									borderWidth: 1
-							}]
-					},
-			});
-		</script>
 	</div>
+
+	<script>
+		var labels = <?php echo $data_labels_name; ?>;
+		var data = <?php echo $data_labels_count; ?>;
+		var price = <?php echo $data_labels_price; ?>;
+
+		var ctx = document.getElementById("productPerson");
+		var myChart = new Chart(ctx, {
+				type: 'doughnut',
+				data: {
+						labels: labels,
+						datasets: [{
+								label: '# productes/persona',
+								data: data,
+								backgroundColor: [
+									'rgba(255, 99, 132, 0.5)',
+									'rgba(54, 162, 235, 0.5)',
+									'rgba(255, 206, 86, 0.5)',
+									'rgba(75, 192, 192, 0.5)',
+									'rgba(153, 102, 255, 0.5)',
+									'rgba(255, 159, 64, 0.5)'
+								],
+								borderColor: [
+									'rgba(255,99,132,1)',
+									'rgba(54, 162, 235, 1)',
+									'rgba(255, 206, 86, 1)',
+									'rgba(75, 192, 192, 1)',
+									'rgba(153, 102, 255, 1)',
+									'rgba(255, 159, 64, 1)'
+								],
+								borderWidth: 1
+						}]
+				},
+		});
+
+		var ctx = document.getElementById("pricePerson");
+		var myChart = new Chart(ctx, {
+				type: 'doughnut',
+				data: {
+						labels: labels,
+						datasets: [{
+								label: '# productes/persona',
+								data: price,
+								backgroundColor: [
+									'rgba(255, 99, 132, 0.5)',
+									'rgba(54, 162, 235, 0.5)',
+									'rgba(255, 206, 86, 0.5)',
+									'rgba(75, 192, 192, 0.5)',
+									'rgba(153, 102, 255, 0.5)',
+									'rgba(255, 159, 64, 0.5)'
+								],
+								borderColor: [
+									'rgba(255,99,132,1)',
+									'rgba(54, 162, 235, 1)',
+									'rgba(255, 206, 86, 1)',
+									'rgba(75, 192, 192, 1)',
+									'rgba(153, 102, 255, 1)',
+									'rgba(255, 159, 64, 1)'
+								],
+								borderWidth: 1
+						}]
+				},
+		});
+	</script>
+
 </div>
 
 @endsection

@@ -60,7 +60,13 @@ class LlistesController extends Controller
 
 		$owner = User::getOwner($id);
 		$owner_p_count = DB::table('productes')->where('productes.list_id', $id)->where('productes.assigned_to', $owner->owner)->count();
-		$owner_price =
+		$owner_price = 0;
+
+		foreach ($products as $product) {
+			if ( $product->assigned_to == $owner->owner ) {
+				$owner_price += ($product->quantity*$product->price);
+			}
+		}
 
 		$colaboradors = User::getColaboradors($id);
 
@@ -68,13 +74,20 @@ class LlistesController extends Controller
 		$data_labels_count = array($owner_p_count);
 		$data_labels_price = array($owner_price);
 
-
 		foreach ($colaboradors as $colaborador) {
 			$colab = ($colaborador->name.' '.$colaborador->last_name);
 			$count = DB::table('productes')->where('productes.list_id', $id)->where('productes.assigned_to', $colaborador->id)->count();
+			$colab_price = 0;
+
+			foreach ($products as $product) {
+				if ( $product->assigned_to == $colaborador->id ) {
+					$colab_price += ($product->quantity*$product->price);
+				}
+			}
 
 			array_push( $data_labels_name, $colab );
 			array_push( $data_labels_count, $count );
+			array_push( $data_labels_price, $colab_price);
 		}
 
 		return view('lists.show', array(
@@ -84,7 +97,7 @@ class LlistesController extends Controller
 			'colaboradors' => $colaboradors,
 			'data_labels_name' => json_encode($data_labels_name),
 			'data_labels_count' => json_encode($data_labels_count),
-			// 'data_labels_price' => json_encode($data_labels_price),
+			'data_labels_price' => json_encode($data_labels_price),
 		));
 	}
 

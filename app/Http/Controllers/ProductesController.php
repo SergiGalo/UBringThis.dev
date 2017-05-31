@@ -78,11 +78,12 @@ class ProductesController extends Controller
 		$product = Producte::findOrFail($id);
 		$product->list_id = $request->input('list_id');
 		$product->name = $request->input('name');
+		$product->editable = $editable;
 		$product->quantity = $quantity;
 		$product->units = $request->input('units');
 		$product->price = $price;
 		$product->assigned_to = $assigned_to;
-		$product->editable = $editable;
+		$product->edited_by = auth()->user()->name.' '.auth()->user()->last_name;
 		$product->save();
 
 		return redirect('/lists/'.$request->input('list_id'));
